@@ -87,7 +87,7 @@ module Afipws
       nro = comprobante.delete :cbte_nro
       iva = comprobante.delete :imp_iva
       comprobante.delete :tributos if comprobante[:imp_trib] == 0
-      comprobante.merge cbte_desde: nro, cbte_hasta: nro, 'ImpIVA' => iva
+      comprobante.merge! cbte_desde: nro, cbte_hasta: nro, 'ImpIVA' => iva
       comprobante.merge! periodo_asoc: opciones[:periodo_asoc] if opciones[:periodo_asoc]
 
       comprobante
